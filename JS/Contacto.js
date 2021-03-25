@@ -1,16 +1,11 @@
 function validar(Contacto){
-if(Contacto.Nombre.value.length < 5){
-    alert("Por favor escribe mas de 5 caracteres en el campo nombre");
-    Contacto.Nombre.focus();
-return false;
-}
+
 
 var checkas = "QWERTYUIOPASDFGHJKLÑZXCVBNM" 
 + "qwertyuioasdfghjklzxcvbnm";
+var checkStd = Contacto.asunto.value;
 
-var checkStd = Contacto.Email.value;
-
-var allValid = true;
+var allValids = true;
 
 for(var i = 0; i < checkStd.length; i++){
     var ch = checkStd.charAt(i);
@@ -19,22 +14,27 @@ for(var i = 0; i < checkStd.length; i++){
         break;
     
     if(j == checkas.length){
-        allValid = false;
+        allValids = false;
         break;
     }
 }
 
-if(!allValid){
+if(!allValids){
     alert("Escribe solo letras en el campo Nombre");
-    Contacto.Email.focus();
+    Contacto.asunto.focus();
     return false;
+}
+
+if(Contacto.nombre.value.length < 5){
+    alert("Por favor escribe mas de 5 caracteres en el campo nombre");
+    Contacto.Nombre.focus();
+return false;
 }
 
 
 var checkOk = "QWERTYUIOPASDFGHJKLÑZXCVBNM" 
 + "qwertyuioasdfghjklzxcvbnm";
-
-var checkStr = Contacto.Nombre.value;
+var checkStr = Contacto.nombre.value;
 
 var allValid = true;
 
@@ -52,13 +52,13 @@ for(var i = 0; i < checkStr.length; i++){
 
 if(!allValid){
     alert("Escribe solo letras en el campo Nombre");
-    Contacto.Nombre.focus();
+    Contacto.nombre.focus();
     return false;
 }
 
 
 
-var txt = Contacto.Email.value;
+var txt = Contacto.email.value;
 
 //expresion regular
 //algo@algo.com
