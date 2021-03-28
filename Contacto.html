@@ -11,25 +11,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="CSS/estilos.css">
+    <link rel="icon" href="./img/SmartCypher.jpg">
+    <script src="js/Contacto.js"></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js'></script>
+<script type='text/javascript'>
+   (function(){
+      emailjs.init('<user_rApsFSg5zhiAwg2dpRuXU>');
+   })();
+</script>
+<script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            this.contact_number.value = Math.random() * 100000 | 0;
+            emailjs.sendForm('contact_service', 'contact_form', this)
+                .then(function() {
+                    console.log('SUCCESS!');
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });
+        });
+    }
+</script>
 </head>
 <body>
+<form id="contact-form">
+    <input type="hidden" name="contact_number">
+    <label>Nombre</label>
+    <input type="text" name="user_name">
+    <label>Email</label>
+    <input type="email" name="user_email">
+    <label>Mensaje</label>
+    <textarea name="message"></textarea>
+    <button type="submit" value="Send" onclick="alerta()">Enviar</button>
     
-    <div>
-        <h1> HOJA DE CONTACTOS</h1>
-    </div>
-    <div>
-        <form method="GET" name="contacto" onsubmit="return validar(this)" class='contacto'  action="Contacto.html" >
-            <div><label>Tu Nombre:</label><input type='text' value='' name="nombre" ></div>
-            <div><label>Tu Email:</label><input type='text' value='' name="email"></div>
-            <div><label>Asunto:</label><input type='text' value='' name="asunto"></div>
-            <div><label>Mensaje:</label><textarea rows='6'></textarea></div>
-            <div><input type='submit' value='Envia Mensaje' name="enviar"></div>
-        </form>
-    </div>
-    <article>
-        <h3> <a href="index.html">VOLVER AL IDEARIO</a></h3>
-     </article>
-    
-</body>
+</form>
 </body>
 </html>
